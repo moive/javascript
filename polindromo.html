@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    	<title>Javascript</title>
+	<meta name="description" content="javascript" />
+    <script type="text/javascript">
+        var txt = prompt();
+        function polindromo(cadena){
+            var resultado = "La cadena \""+cadena+"\" \n";
+            var cadenaOriginal = cadena.toLowerCase();
+            var letrasEspacios = cadenaOriginal.split("");
+
+            var cadenaSinEspacios = "";
+
+            for (var i in letrasEspacios) {
+                if (letrasEspacios[i] != " "){
+                    cadenaSinEspacios += letrasEspacios[i];
+                }
+            }
+            var letras = cadenaSinEspacios.split("");
+            var letrasReves = letras.reverse();
+
+            var iguales = true;
+            for (var i in letras) {
+                if (letras[i] != letrasReves[i]) {
+                    iguales = false;
+                }
+            }
+
+            if (iguales) {
+                return resultado += "es un palindromo";
+            }else {
+                return resultado += "no es un palindromo";
+            }
+        }
+        alert(polindromo(txt))
+    </script>
+</head>
+<body>
+
+</body>
+</html>
