@@ -1,36 +1,40 @@
-const depsMap = new Map();
+const targetMap = new WeakMap(); // For storing the dependencies for each reactive object
 
-function track(key){
-	let dep = depsMap.get(key);
-
-	if(!dep) {
-		depsMap.set(key, (dep = new Set())) // No dep yet, so let's create one
+function track(target, key){
+	let depsMap = targetMap.get(target); // Get the current depsMap for this target (reactive object)
+	if(!depsMap){
+		targetMap.set(target, (depsMap = new Map())); // If it doesn't exist, create it
 	}
 
-	dep.add(effect); // Add this effect
-	// Since it's a set, it won't add the effect again if it already exists
+	let dep = depsMap.get(key); // Get the dependency object for this property
+
+	if(!dep){depsMap.set(key, (dep = new Set()))} // If it doesn't exist, create it
+
+	dep.add(effect); // Add the effect to the dependency
 }
 
-function trigger(key){
-	let dep = depsMap.get(key); // Get the dep for this key
+function trigger(target, key){
+	const depsMap = targetMap.get(target); // Does this object have any properties that have dependencies?
+
+	if(!depsMap) return; // If no, return from the function immediately
+
+	let dep = depsMap.get(key); // Otherwise, check it this property has a dependency
+
 	if(dep){
-		dep.forEach(effect => effect()) // If it exists, run each effect
+		dep.forEach(effect=>{effect()}) // Run those
 	}
 }
 
 let product = {price: 5, quantity: 2};
 let total = 0;
-
-let effect = ()=> {
+let effect = ()=>{
 	total = product.price * product.quantity;
 }
-
-
-track('quantity');
+track(product, 'quantity');
 effect();
-console.log('total: ', total);
-
+console.log('total: ', total)
 product.quantity = 3;
 console.log('product.quantity: ', product.quantity);
-trigger('quantity');
-console.log('total: ', total);
+
+trigger(product, 'quantity');
+console.log('total: ', total)
