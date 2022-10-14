@@ -38,3 +38,7 @@ console.log('product.quantity: ', product.quantity);
 
 trigger(product, 'quantity');
 console.log('total: ', total)
+
+// targetMap:-> where wen store the dependencies associated with each reactive object's properties
+// depsMap:-> Where we store the dependencies for each property
+// dep:-> A dependency which is a set of effects that should get re-run when values change
