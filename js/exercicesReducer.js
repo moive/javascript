@@ -23,6 +23,8 @@ var wishlist = [
 	{ title: "A second Tesla Model S", price: 90000 },
 ];
 
+var arrays = [["1", "2", "3"], [true], [4, 5, 6]];
+
 const total = arr.reduce((acc, elem) => acc + elem, 0);
 console.log("total: ", total);
 
@@ -52,4 +54,9 @@ const shoppingSpree = wishlist
 console.log("shoppingSpree", shoppingSpree);
 
 // 5) Given an array of arrays, flatten them into a single array
+
+const flatten = arrays.flat();
+// const flatten = arrays.reduce((acc, item) => acc.concat(item), []);
+console.log("flatten", flatten);
+
 // 6) Given an array of potential voters, return an object representing the results of the vote
