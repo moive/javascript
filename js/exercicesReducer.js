@@ -26,7 +26,7 @@ var arrays = [["1", "2", "3"], [true], [4, 5, 6]];
 const total = arr.reduce((acc, elem) => acc + elem, 0);
 console.log("total: ", total);
 // 2) Turn an array of numbers into a long string of all those numbers.
-const stringConcat = arr.reduce((acc, elem) => acc.toString() + elem.toString(), "");
+const stringConcat = arr.reduce((acc, elem) => acc + elem, "");
 console.log("stringConcat: ", stringConcat);
 // 3) Turn an array of voter objects into a count of how many people voted
 const totalVotes = voters.reduce((acc, curr) => acc + (curr.voted ? 1 : 0), 0);
