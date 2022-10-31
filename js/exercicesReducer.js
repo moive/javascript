@@ -32,9 +32,7 @@ console.log("stringConcat: ", stringConcat);
 const totalVotes = voters.reduce((acc, curr) => acc + (curr.voted ? 1 : 0), 0);
 console.log("totalVotes:", totalVotes);
 // 4) Given an array of all your wishlist items, figure out how much it would cost to just buy everything at once
-const shoppingSpree = wishlist
-    .map((item) => item.price)
-    .reduce((acc, ele) => acc + ele, 0);
+const shoppingSpree = wishlist.reduce((acc, ele) => acc + ele.price, 0);
 console.log("shoppingSpree", shoppingSpree);
 // 5) Given an array of arrays, flatten them into a single array
 const flatten = arrays.flat();

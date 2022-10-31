@@ -38,9 +38,7 @@ console.log("totalVotes:", totalVotes);
 
 // 4) Given an array of all your wishlist items, figure out how much it would cost to just buy everything at once
 
-const shoppingSpree = wishlist
-	.map((item) => item.price)
-	.reduce((acc, ele) => acc + ele, 0);
+const shoppingSpree = wishlist.reduce((acc, ele) => acc + ele.price, 0);
 
 console.log("shoppingSpree", shoppingSpree);
 
