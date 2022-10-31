@@ -30,3 +30,19 @@ request(2).then((r) => console.log(r));
 request(2).then((r) => console.log(r));
 request(2).then((r) => console.log(r));
 request(2).then((r) => console.log(r));
+const sumNumbers = memoization((limit) => {
+    let sum = 0;
+    for (let i = 0; i < limit; i++) {
+        sum += i;
+    }
+    return sum;
+});
+console.time("sumNumbers");
+console.log(sumNumbers(10000));
+console.timeEnd("sumNumbers");
+console.time("sumNumbers");
+console.log(sumNumbers(10000));
+console.timeEnd("sumNumbers");
+console.time("sumNumbers");
+console.log(sumNumbers(10000));
+console.timeEnd("sumNumbers");
