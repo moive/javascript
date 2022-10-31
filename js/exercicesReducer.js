@@ -95,5 +95,9 @@ const averageSubArray = (isNumbs) => {
     return average;
 };
 console.log("averageSubArray", averageSubArray(arraysnums));
+// 9) Return the number of 'true' in the array
+const trueArray = [true, false, false, true, true, false];
+const countTrue = trueArray.reduce((acc, curr) => acc + (curr ? 1 : 0), 0);
+console.log("countTrue", countTrue);
 // https://dev.to/rakshithbellare/array-reduce-method-in-javascript-330d
 // https://coursework.vschool.io/array-reduce-exercises/
