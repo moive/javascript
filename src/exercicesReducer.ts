@@ -103,5 +103,23 @@ const voterResults = voters.reduce(
 );
 console.log("voterResults", voterResults);
 
+// 8) Given an array, use reduce to calculate the average of sub arrays and print out the averages.
+const arraysnums = [
+	[1, 6, 9, 2, 5, 4],
+	[50, 67, 3, 80, 24, 17],
+	[100, 77, 50, 35, 12, 56],
+];
+
+const averageSubArray = (isNumbs: number[][]) => {
+	const average = isNumbs.map((item) => {
+		const averagesub = item.reduce((acc, curr) => acc + curr, 0);
+		return Math.round(averagesub / item.length);
+	});
+
+	return average;
+};
+
+console.log("averageSubArray", averageSubArray(arraysnums));
+
 // https://dev.to/rakshithbellare/array-reduce-method-in-javascript-330d
 // https://coursework.vschool.io/array-reduce-exercises/
