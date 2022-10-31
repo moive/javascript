@@ -60,3 +60,59 @@ const flatten = arrays.flat();
 console.log("flatten", flatten);
 
 // 6) Given an array of potential voters, return an object representing the results of the vote
+
+/* Include how many of the potential voters were in the ages 18-25,
+how many from 26-35, how many from 36-55, 
+and how many of each of those age ranges actually voted. 
+The resulting object containing this data should have 6 properties. 
+
+Returned value shown below:
+{ numYoungVotes: 1,
+  numYoungPeople: 4,
+  numMidVotesPeople: 3,
+  numMidsPeople: 4,
+  numOldVotesPeople: 3,
+  numOldsPeople: 4 
+} */
+
+const voterResults = voters.reduce(
+	(acc, item) => {
+		if (item.age >= 18 && item.age <= 25 && item.voted) {
+			acc.numYoungVotes++;
+		}
+
+		if (item.age >= 18 && item.age <= 25) {
+			acc.numYoungPeople++;
+		}
+
+		if (item.age >= 26 && item.age <= 35 && item.voted) {
+			acc.numMidVotesPeople++;
+		}
+
+		if (item.age >= 26 && item.age <= 35) {
+			acc.numMidsPeople++;
+		}
+
+		if (item.age >= 36 && item.age <= 55 && item.voted) {
+			acc.numOldVotesPeople++;
+		}
+
+		if (item.age >= 36 && item.age <= 55) {
+			acc.numOldsPeople++;
+		}
+
+		return { ...acc };
+	},
+	{
+		numYoungVotes: 0,
+		numYoungPeople: 0,
+		numMidVotesPeople: 0,
+		numMidsPeople: 0,
+		numOldVotesPeople: 0,
+		numOldsPeople: 0,
+	}
+);
+console.log("voterResults", voterResults);
+
+// https://dev.to/rakshithbellare/array-reduce-method-in-javascript-330d
+// https://coursework.vschool.io/array-reduce-exercises/
