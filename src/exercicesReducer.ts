@@ -37,7 +37,7 @@ console.log("stringConcat: ", stringConcat);
 
 // 3) Turn an array of voter objects into a count of how many people voted
 const totalVotes = voters.reduce((acc, curr) => acc + (curr.voted ? 1 : 0), 0);
-console.log("totalVotes", totalVotes);
+console.log("totalVotes:", totalVotes);
 
 // 4) Given an array of all your wishlist items, figure out how much it would cost to just buy everything at once
 
